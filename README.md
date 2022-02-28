@@ -18,7 +18,22 @@
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
 
 ## Estimates
-<!-- See below -->
+
+### Name of feature: Set up your repositories
+
+- Estimate of time needed to complete: 2
+- Start time: 5pm
+- Finish time: 630pm
+- Actual time needed to complete: 130
+
+### Name of feature: Storage
+
+- Estimate of time needed to complete: 3
+- Start time: 330pm
+- Finish time:
+- Actual time needed to complete:
 
 ## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+
+- Nicholas Mercado
+
