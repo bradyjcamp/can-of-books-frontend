@@ -14,19 +14,19 @@ class App extends React.Component {
     super(props);
     this.state = {
       user: null,
-    }
+    };
   }
 
   loginHandler = (user) => {
     this.setState({
       user,
-    })
+    });
   }
 
   logoutHandler = () => {
     this.setState({
       user: null,
-    })
+    });
   }
 
   render() {
@@ -43,7 +43,7 @@ class App extends React.Component {
           <Footer />
         </Router>
       </>
-    )
+    );
   }
 }
 

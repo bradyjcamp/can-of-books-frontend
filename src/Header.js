@@ -12,7 +12,7 @@ class Header extends React.Component {
         {/* TODO: if the user is logged in, render a navigation link to profile page */}
         {/* TODO: if the user is logged in, render the `LogoutButton` */}
       </Navbar>
-    )
+    );
   }
 }
 
