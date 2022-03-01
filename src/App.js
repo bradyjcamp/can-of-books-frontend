@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import BestBooks from './BestBooks'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
@@ -40,6 +41,7 @@ class App extends React.Component {
             </Route>
             {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
           </Switch>
+              <BestBooks />
           <Footer />
         </Router>
       </>

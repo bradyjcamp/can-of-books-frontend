@@ -22,14 +22,21 @@
 ### Name of feature: Set up your repositories
 
 - Estimate of time needed to complete: 2
-- Start time: 5pm
-- Finish time: 630pm
+- Start time: 2pm
+- Finish time: 330pm
 - Actual time needed to complete: 130
 
 ### Name of feature: Storage
 
 - Estimate of time needed to complete: 3
 - Start time: 330pm
+- Finish time: 5:30pm
+- Actual time needed to complete: 2 hours
+
+### Name of feature: Book Component
+
+- Estimate of time needed to complete: 3
+- Start time: 530pm
 - Finish time:
 - Actual time needed to complete:
 
