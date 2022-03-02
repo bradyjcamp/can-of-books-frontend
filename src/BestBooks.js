@@ -37,34 +37,23 @@ class BestBooks extends React.Component {
         books: [...this.state.books, createdBook.data]
       })
     } catch(error){
-      console.log(' There is an error: ', error.response.data);
+      console.log(' There is an error: ', error.message);
     }
   }
 
-  handleBookSubmit = (e) => {
-    e.preventDefault();
 
-    let newBook = {
-      title: e.target.title.value,
-      email: e.target.email.value,
-      description: e.target.description
-      //status: e.target.status.checked??
+  deleteBook = async (id) => {
+    try{
+      let url = `${SERVER}/books/${id}`;
+      await axios.delete(url)
+      const updatedBooks = this.state.books.filter(book => book._id !== id);
+      this.setState({
+        books: updatedBooks
+      })
+    } catch(error){
+      console.log(' There is an error: ', error.message);
     }
-    this.postBook(newBook);
   }
-
-  // deleteBook = async (id) => {
-  //   try{
-  //     let url = `${SERVER}/books/${id}`;
-  //     await axios.delete(url)
-  //     const updatedBooks = this.state.books.filter(book => book._id !== id);
-  //     this.setState({
-  //       books: updatedBooks
-  //     })
-  //   } catch(error){
-  //     console.log(' There is an error: ', error.response.data);
-  //   }
-  // }
 
   componentDidMount() {
     this.getBooks();
@@ -72,11 +61,15 @@ class BestBooks extends React.Component {
 
   render() {
     /* DONE: render user's books in a Carousel */
+    console.log('Best book :', this.state);
 
     return (
       <>
         <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
-        <AddBookButton />
+        <AddBookButton
+        user={this.props.user} 
+        handleBookSubmit ={this.postBook}
+        />
         {this.state.books.length > 0 ? (
         <Carousel>
           {this.state.books.map((book, idx) =>(
