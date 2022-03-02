@@ -4,6 +4,7 @@ import AddBookButton from "./AddBookButton";
 import Carousel from "react-bootstrap/Carousel";
 import bookImg from './booksmall.jpg';
 import DeleteButton from "./DeleteButton";
+import UpdateBookButton from "./UpdateBookButton";
 
 let SERVER = process.env.REACT_APP_SERVER_URL;
 
@@ -56,6 +57,19 @@ class BestBooks extends React.Component {
     }
   }
 
+  updateBook = async (bookToUpdate) => {
+    try{
+      let url = `${SERVER}/books/${bookToUpdate._id}`;
+      let updatedBook = await axios.put(url, bookToUpdate);
+      let updatedBookData = this.state.books.map(existingBook => existingBook._id === bookToUpdate._id ? updatedBook.data : existingBook);
+      this.setState({
+        books: updatedBookData
+      });
+    } catch(error){
+      console.log(' There is an error: ', error.message);
+    }
+  }
+
   componentDidMount() {
     this.getBooks();
   }
@@ -87,6 +101,10 @@ class BestBooks extends React.Component {
               <DeleteButton
               book_id={book._id}
               deleteBook={this.deleteBook}/>
+              <UpdateBookButton
+              book_id={book._id}
+              updateBook={this.updateBook}
+              />
             </Carousel.Caption>
           </Carousel.Item>))}
         </Carousel>
