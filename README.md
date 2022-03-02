@@ -1,7 +1,7 @@
 # Can of Books
 
 **Author**: Brady Camp and Nicholas Mercado
-**Version**: 1.1.0
+**Version**: 1.1.3
 
 ## Overview
 
@@ -23,6 +23,7 @@
 - 02-28-2022 7:00pm - Got started on Book Component Rendering
 - 03-01-2022 10:00am - fixed rendering issue with carousel
 - 03-01-2022 11:00am - added login logout functions to website
+- 03-01-2022 6:00pm - added delete functionality to page
 
 ## Estimates
 
@@ -52,6 +53,13 @@
 - Estimate of time needed to complete: 1 hour
 - Start time: 1000am
 - Finish time: 1100am
+- Actual time needed to complete: 1 hour
+
+### Name of feature: Delete
+
+- Estimate of time needed to complete: 2 hour
+- Start time: 530pm
+- Finish time: 630pm
 - Actual time needed to complete: 1 hour
 
 ## Credit and Collaborations
