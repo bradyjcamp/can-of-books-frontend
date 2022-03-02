@@ -3,6 +3,7 @@ import React from "react";
 import AddBookButton from "./AddBookButton";
 import Carousel from "react-bootstrap/Carousel";
 import bookImg from './booksmall.jpg';
+import DeleteButton from "./DeleteButton";
 
 let SERVER = process.env.REACT_APP_SERVER_URL;
 
@@ -72,9 +73,9 @@ class BestBooks extends React.Component {
         />
         {this.state.books.length > 0 ? (
         <Carousel>
-          {this.state.books.map((book, idx) =>(
+          {this.state.books.map(book =>(
           <Carousel.Item className="h-100"
-          key={idx}>
+          key={book._id}>
             <img
             className="d-block w-100 h-50"
             src={bookImg}
@@ -83,6 +84,9 @@ class BestBooks extends React.Component {
             <Carousel.Caption>
               <h1>{book.title}</h1>
               <h3>{book.description}</h3>
+              <DeleteButton
+              book_id={book._id}
+              deleteBook={this.deleteBook}/>
             </Carousel.Caption>
           </Carousel.Item>))}
         </Carousel>
