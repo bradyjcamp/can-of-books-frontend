@@ -32,6 +32,7 @@ class App extends React.Component {
     });
   }
 
+
   render() {
     console.log('This state:', this.state);
     // console.log(this.state.user.email);
@@ -39,6 +40,9 @@ class App extends React.Component {
       <>
         <Router>
           <Header user={this.state.user} onLogout={this.logoutHandler} />
+          {/* <AddBookButton /> */}
+          {/* Move to BestBooks eventually  */}
+   
           <Switch>
             <Route exact path='/'>
               {/* TODO: if the user is logged in, render the `BestBooks` component, if they are not, render the `Login` component */}

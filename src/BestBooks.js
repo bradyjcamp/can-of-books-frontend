@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import AddBookButton from "./AddBookButton";
 import Carousel from "react-bootstrap/Carousel";
 import bookImg from './booksmall.jpg';
 
@@ -27,16 +28,48 @@ class BestBooks extends React.Component {
     }
   };
 
+  postBook = async (newBook) => {
+    try{
+      let url = `${SERVER}/books`;
+      let createdBook = await axios.post(url, newBook);
+      console.log(createdBook.data);
+      this.setState({
+        books: [...this.state.books, createdBook.data]
+      })
+    } catch(error){
+      console.log(' There is an error: ', error.message);
+    }
+  }
+
+
+  deleteBook = async (id) => {
+    try{
+      let url = `${SERVER}/books/${id}`;
+      await axios.delete(url)
+      const updatedBooks = this.state.books.filter(book => book._id !== id);
+      this.setState({
+        books: updatedBooks
+      })
+    } catch(error){
+      console.log(' There is an error: ', error.message);
+    }
+  }
+
   componentDidMount() {
     this.getBooks();
   }
 
   render() {
     /* DONE: render user's books in a Carousel */
+    console.log('Best book :', this.state);
 
     return (
       <>
         <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
+        <AddBookButton
+        user={this.props.user} 
+        handleBookSubmit ={this.postBook}
+        />
         {this.state.books.length > 0 ? (
         <Carousel>
           {this.state.books.map((book, idx) =>(
