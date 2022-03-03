@@ -65,6 +65,7 @@ class BestBooks extends React.Component {
       this.setState({
         books: updatedBookData
       });
+      console.log("UpdateBooks state: ", this.state.books);
     } catch(error){
       console.log(' There is an error: ', error.message);
     }
@@ -93,7 +94,7 @@ class BestBooks extends React.Component {
             <img
             className="d-block w-100 h-50"
             src={bookImg}
-            alt={book.name}
+            alt={book.title}
             />
             <Carousel.Caption>
               <h1>{book.title}</h1>
@@ -102,6 +103,8 @@ class BestBooks extends React.Component {
               book_id={book._id}
               deleteBook={this.deleteBook}/>
               <UpdateBookButton
+              book={book}
+              user={this.props.user}
               book_id={book._id}
               updateBook={this.updateBook}
               />
