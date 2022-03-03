@@ -16,11 +16,9 @@ class BestBooks extends React.Component {
     };
   }
 
-  /* DONE: Make a GET request to your API to fetch books for the logged in user  */
   getBooks = async () => {
     try {
       let url = `${SERVER}/books?email=${this.props.user.email}`
-      console.log(url);
       let results = await axios.get(url);
       this.setState({
         books: results.data,
@@ -34,7 +32,6 @@ class BestBooks extends React.Component {
     try{
       let url = `${SERVER}/books`;
       let createdBook = await axios.post(url, newBook);
-      console.log(createdBook.data);
       this.setState({
         books: [...this.state.books, createdBook.data]
       })
@@ -65,7 +62,6 @@ class BestBooks extends React.Component {
       this.setState({
         books: updatedBookData
       });
-      console.log("UpdateBooks state: ", this.state.books);
     } catch(error){
       console.log(' There is an error: ', error.message);
     }
@@ -76,9 +72,6 @@ class BestBooks extends React.Component {
   }
 
   render() {
-    /* DONE: render user's books in a Carousel */
-    console.log('Best book :', this.state);
-
     return (
       <>
         <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
@@ -92,7 +85,7 @@ class BestBooks extends React.Component {
           <Carousel.Item className="h-100"
           key={book._id}>
             <img
-            className="d-block w-100 h-50"
+            className="d-block w-75 h-50 m-auto"
             src={bookImg}
             alt={book.title}
             />

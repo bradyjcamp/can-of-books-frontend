@@ -10,7 +10,6 @@ class BookFormModal extends React.Component {
       description: e.target.description.value,
       status: e.target.status.checked,
     };
-    console.log("New book: ", newBook);
     this.props.handleBookSubmit(newBook);
     this.props.close();
   };
@@ -18,7 +17,6 @@ class BookFormModal extends React.Component {
   render() {
     return (
       <>
-        {/* title email desciption */}
         <Modal onHide={this.props.close} show={this.props.show}>
           <Modal.Header closeButton>
             <Modal.Title>Modal title</Modal.Title>

@@ -23,11 +23,9 @@ class AddBookButton extends React.Component {
   };
 
   render() {
-    console.log("AddBookButton state: ", this.state);
     return (
       <>
         {
-          // need conditional to render add book modal
           this.state.show ? (
             <BookFormModal
               user={this.props.user}

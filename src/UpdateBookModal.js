@@ -13,18 +13,14 @@ class UpdateBookModal extends React.Component {
       description: e.target.description.value || this.props.book.description,
       status: e.target.status.checked,
       _id: this.props.book_id,
-      __v: this.props.book.__v
     };
-    console.log("Updated Book: ", bookToUpdate);
     this.props.updateBook(bookToUpdate);
     this.props.close();
   };
 
   render() {
-    console.log(this.props.books)
     return (
       <>
-        {/* title email desciption */}
         <Modal onHide={this.props.close} show={this.props.show}>
           <Modal.Header closeButton>
             <Modal.Title>Modal title</Modal.Title>

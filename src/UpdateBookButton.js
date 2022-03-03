@@ -24,17 +24,14 @@ class UpdateBookButton extends React.Component{
   };
 
   render() {
-    console.log("AddBookButton state: ", this.state);
     return (
       <>
         {
-          // need conditional to render add book modal
           this.state.show ? (
             <UpdateBookModal
               book={this.props.book}
               user={this.props.user}
               book_id={this.props.book_id}
-              // this below will change to this.props.updateBook
               updateBook={this.props.updateBook}
               show={this.state.show}
               close={this.handleClose}

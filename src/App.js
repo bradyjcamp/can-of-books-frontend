@@ -4,6 +4,7 @@ import Footer from './Footer';
 import BestBooks from './BestBooks';
 import Login from './Login';
 import Profile from './Profile';
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
@@ -34,21 +35,14 @@ class App extends React.Component {
 
 
   render() {
-    console.log('This state:', this.state);
-    // console.log(this.state.user.email);
     return (
       <>
         <Router>
           <Header user={this.state.user} onLogout={this.logoutHandler} />
-          {/* <AddBookButton /> */}
-          {/* Move to BestBooks eventually  */}
-   
           <Switch>
             <Route exact path='/'>
-              {/* TODO: if the user is logged in, render the `BestBooks` component, if they are not, render the `Login` component */}
               {this.state.user ? <BestBooks user={this.state.user} /> : <Login loginHandler={this.loginHandler}/> }
             </Route>
-            {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
             <Route exact path='/profile'>
               {
                 this.state.user &&
