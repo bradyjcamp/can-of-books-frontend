@@ -1,8 +1,9 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
-import BookFormModal from "./BookFormModal";
+import UpdateBookModal from "./UpdateBookModal";
 
-class AddBookButton extends React.Component {
+
+class UpdateBookButton extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
@@ -27,15 +28,17 @@ class AddBookButton extends React.Component {
       <>
         {
           this.state.show ? (
-            <BookFormModal
+            <UpdateBookModal
+              book={this.props.book}
               user={this.props.user}
-              handleBookSubmit={this.props.handleBookSubmit}
+              book_id={this.props.book_id}
+              updateBook={this.props.updateBook}
               show={this.state.show}
               close={this.handleClose}
             />
           ) : (
             <Button variant="primary" onClick={this.handleShow}>
-              Add Book
+              Update Book
             </Button>
           )
         }
@@ -44,4 +47,4 @@ class AddBookButton extends React.Component {
   }
 }
 
-export default AddBookButton;
+export default UpdateBookButton;
