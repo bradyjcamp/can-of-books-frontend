@@ -5,6 +5,7 @@ import Carousel from "react-bootstrap/Carousel";
 import bookImg from './booksmall.jpg';
 import DeleteButton from "./DeleteButton";
 import UpdateBookButton from "./UpdateBookButton";
+import { withAuth0 } from '@auth0/auth0-react';
 
 let SERVER = process.env.REACT_APP_SERVER_URL;
 
@@ -16,13 +17,31 @@ class BestBooks extends React.Component {
     };
   }
 
+  // getBooks = async () => {
+  //   try {
+  //     let url = `${SERVER}/books?email=${this.props.user.email}`
+  //     let results = await axios.get(url);
+  //     this.setState({
+  //       books: results.data,
+  //     });
+  //   } catch (error) {
+  //     console.log("Error: ", error.message);
+  //   }
+  // };
+  // ------ auth0 refactoring
   getBooks = async () => {
     try {
-      let url = `${SERVER}/books?email=${this.props.user.email}`
-      let results = await axios.get(url);
-      this.setState({
-        books: results.data,
-      });
+      if(this.props.auth0.isAuthenticated){
+        //get token
+        const res = await this.props.auth0.getIdTokenClaims();
+        const jwt = res.__raw;
+        console.log(jwt);
+        let url = `${SERVER}/books?email=${this.props.user.email}`
+        let results = await axios(url);
+        this.setState({
+          books: results.data,
+        });
+      }
     } catch (error) {
       console.log("Error: ", error.message);
     }
@@ -112,4 +131,4 @@ class BestBooks extends React.Component {
   }
 }
 
-export default BestBooks;
+export default withAuth0(BestBooks);

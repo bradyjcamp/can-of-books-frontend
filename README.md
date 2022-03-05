@@ -1,7 +1,7 @@
 # Can of Books
 
 **Author**: Brady Camp and Nicholas Mercado
-**Version**: 1.1.3
+**Version**: 1.3.0
 
 ## Overview
 
@@ -24,6 +24,8 @@
 - 03-01-2022 10:00am - fixed rendering issue with carousel
 - 03-01-2022 11:00am - added login logout functions to website
 - 03-01-2022 6:00pm - added delete functionality to page
+- 03-02-2022 2:30pm - Added PUT
+- 03-04-2022 7:00pm - Added Auth0
 
 ## Estimates
 
@@ -61,6 +63,13 @@
 - Start time: 530pm
 - Finish time: 630pm
 - Actual time needed to complete: 1 hour
+
+### Name of feature: Aut0
+
+Estimate of time needed to complete: 1 hour
+Start time: 6:00pm
+Finish time: 7:05pm
+Actual time needed to complete: 1 hour
 
 ## Credit and Collaborations
 

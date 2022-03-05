@@ -2,10 +2,12 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import BestBooks from './BestBooks';
-import Login from './Login';
-import Profile from './Profile';
+import AuthProfile from './AuthProfile';
+import AuthLogoutButton from './AuthLogoutButton';
+import AuthLoginButton from './AuthLoginButton';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { withAuth0 } from '@auth0/auth0-react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,7 +19,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null
+      // add user for Auth0
+      user: {
+        email: 'bradyjcamp@gmail.com'
+        // props.auth0.user.email
+      }
     };
   }
 
@@ -33,21 +39,22 @@ class App extends React.Component {
     });
   }
 
-
   render() {
+
     return (
       <>
         <Router>
           <Header user={this.state.user} onLogout={this.logoutHandler} />
+          {this.props.auth0.isAuthenticated ? <AuthLogoutButton /> : <AuthLoginButton />}
           <Switch>
             <Route exact path='/'>
-              {this.state.user ? <BestBooks user={this.state.user} /> : <Login loginHandler={this.loginHandler}/> }
+              {this.props.auth0.isAuthenticated && <BestBooks user={this.state.user} />}
             </Route>
             <Route exact path='/profile'>
-              {
-                this.state.user &&
-                <Profile user={this.state.user} />
-                }
+              
+    
+                <AuthProfile  />
+              
             </Route>
           </Switch>
           <Footer />
@@ -57,4 +64,5 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withAuth0(App);
+
